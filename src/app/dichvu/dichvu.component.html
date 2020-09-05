@@ -1,0 +1,71 @@
+<div class="main-wrap-danh-muc-nhan-vien">
+  <ol class="breadcrumb">
+    <li>Danh mục dịch vụ</li>
+  </ol>
+  <div style="margin-bottom: 10px">
+    <button
+      class="btn btn-primary"
+      [routerLink]="['/ThemMoiDichVu']"
+      routerLinkActive="router-link-active"
+    >
+      Thêm mới
+    </button>
+    <button
+      [routerLink]="['/admin']"
+      routerLinkActive="router-link-active"
+      class="btn btn-secondary"
+      style="margin-left: 5px"
+    >
+      Trở lại
+    </button>
+  </div>
+  <table class="table table-bodered">
+    <thead>
+      <th>Mã dịch vụ</th>
+      <th>Tên dịch vụ</th>
+      <th>Giá</th>
+      <th>Nhà cung cấp</th>
+      <th>Nhân viên phát triển</th>
+      <th>Chức năng</th>
+    </thead>
+    <tbody *ngIf="total == 0">
+      <tr>
+        <td colspan="3">Không có dữ liệu</td>
+      </tr>
+    </tbody>
+    <tbody *ngIf="total > 0">
+      <tr *ngFor="let item of dichvu_all">
+        <td>
+          {{ item.Id }}
+        </td>
+        <td style="color: #e91e63">
+          {{ item.ProductName }}
+        </td>
+        <td style="color: #d69449">{{ item.Price }} (nghìn đồng)</td>
+        <td style="color: #871ee9">
+          {{ item.Supplier }}
+        </td>
+        <td style="color: #871ee9">
+          {{ item.CategoryName }}
+        </td>
+        <td>
+          <button
+            [routerLink]="['/ChinhSuaDichVu/' + item.Id]"
+            routerLinkActive="router-link-active"
+            class="btn btn-warning"
+          >
+            Chỉnh sửa
+          </button>
+          <button
+            (click)="remove(item.Id)"
+            href="javascript:;"
+            class="btn btn-danger"
+            style="margin-left: 5px"
+          >
+            Xóa
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

@@ -1,0 +1,90 @@
+<div class="container">
+  <form [formGroup]="model.formGroup" (ngSubmit)="submitData()">
+    <h2>FORM thêm mới dịch vụ</h2>
+
+    <div class="form-group">
+      <label>Tên dịch vụ</label>
+      <input
+        type="text"
+        [(ngModel)]="model.tenDichVu"
+        formControlName="tenDichVu"
+        class="form-control"
+      />
+      <p
+        class="text-muted"
+        [hidden]="!model.formGroup.controls['tenDichVu'].hasError('required')"
+        style="color: red !important"
+      >
+        Vui lòng nhập tên dịch vụ
+      </p>
+    </div>
+    <div class="form-group">
+      <label>Giá</label>
+      <input
+        type="number"
+        [(ngModel)]="model.price"
+        formControlName="price"
+        class="form-control"
+      />
+      <p
+        class="text-muted"
+        [hidden]="!model.formGroup.controls['price'].hasError('required')"
+        style="color: red !important"
+      >
+        Vui lòng nhập giá
+      </p>
+    </div>
+    <div class="form-group">
+      <label>Nhà cung cấp</label>
+      <input
+        type="text"
+        [(ngModel)]="model.nhaCungCap"
+        formControlName="nhaCungCap"
+        class="form-control"
+      />
+      <p
+        class="text-muted"
+        [hidden]="!model.formGroup.controls['nhaCungCap'].hasError('required')"
+        style="color: red !important"
+      >
+        Vui lòng nhập tên nhà cung cấp
+      </p>
+    </div>
+    <div class="form-group">
+      <label>Tên nhân viên</label>
+      <select
+        name="nhanVienCungCap"
+        id="nhanVienCungCap"
+        class="form-control"
+        [(ngModel)]="model.nhanVien"
+        formControlName="nhanVien"
+      >
+        <option *ngFor="let nhanVien of danhSachNhanVien" [value]="nhanVien.id">
+          {{ nhanVien.categoryName }}
+        </option>
+      </select>
+      <p
+        class="text-muted"
+        [hidden]="!model.formGroup.controls['nhanVien'].hasError('required')"
+        style="color: red !important"
+      >
+        Vui lòng chọn nhân viên
+      </p>
+    </div>
+    <button
+      type="submit"
+      class="btn btn-primary"
+      [disabled]="!model.formGroup.valid"
+    >
+      Lưu
+    </button>
+    <button
+      [routerLink]="['/DanhMucDichVu']"
+      routerLinkActive="router-link-active"
+      class="btn btn-secondary"
+      style="margin-left: 5px"
+    >
+      Trở lại
+    </button>
+  </form>
+</div>

@@ -1,0 +1,38 @@
+<div class="main-wrap-danh-muc-nhan-vien">
+  <ol class="breadcrumb">
+    <li>Thống kê tiền lương nhân viên</li>
+  </ol>
+  <div style="margin-bottom: 10px">
+    <button
+      [routerLink]="['/admin']"
+      routerLinkActive="router-link-active"
+      class="btn btn-secondary"
+      style="margin-left: 5px"
+    >
+      Trở lại
+    </button>
+  </div>
+  <table class="table table-bodered">
+    <thead>
+      <th>Tên nhân viên</th>
+      <th>Dịch vụ phát triển được</th>
+      <th>Lương</th>
+    </thead>
+    <tbody *ngIf="total == 0">
+      <tr>
+        <td colspan="3">Không có dữ liệu</td>
+      </tr>
+    </tbody>
+    <tbody *ngIf="total > 0">
+      <tr *ngFor="let item of dichvu_all">
+        <td style="color: #e91e63">
+          {{ item.CategoryName }}
+        </td>
+        <td style="color: #871ee9">
+          {{ item.DichVu }}
+        </td>
+        <td style="color: #d69449">{{ item.Price }} (nghìn đồng)</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

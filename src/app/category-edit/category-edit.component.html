@@ -1,0 +1,38 @@
+<div class="container">
+  <form [formGroup]="model.formGroup" (ngSubmit)="submitData()">
+    <h2>FORM chỉnh sửa nhân viên</h2>
+
+    <div class="form-group">
+      <label>Họ và tên</label>
+      <input
+        type="text"
+        [(ngModel)]="model.categoryName"
+        formControlName="categoryName"
+        class="form-control"
+      />
+      <p
+        class="text-muted"
+        [hidden]="
+          !model.formGroup.controls['categoryName'].hasError('required')
+        "
+      >
+        Vui lòng nhập tên nhân viên
+      </p>
+    </div>
+    <button
+      type="submit"
+      class="btn btn-primary"
+      [disabled]="!model.formGroup.valid"
+    >
+      Lưu
+    </button>
+    <button
+      [routerLink]="['/DanhMucNhanVien']"
+      routerLinkActive="router-link-active"
+      class="btn btn-secondary"
+      style="margin-left: 5px"
+    >
+      Trở lại
+    </button>
+  </form>
+</div>
